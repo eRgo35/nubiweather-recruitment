@@ -4,7 +4,7 @@ A fullstack Next.js weather web app for Nubisoft recruitment exerecise.
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-<img src="image.png" alt="Website" width="400"/>
+<img src="image.png" alt="Website" width="700"/>
 
 The website shows current weather and a 3-day forecast for Gliwice and Hamburg. Web Application calls its own backend API to communicate with the external API server.
 
