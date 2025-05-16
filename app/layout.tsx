@@ -14,6 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.png" />
+        <title>NubiWeather</title>
+      </head>
       <body>
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <Wrapper title={pageTitle}>{children}</Wrapper>

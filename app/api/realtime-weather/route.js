@@ -1,4 +1,4 @@
-import { cities } from "../../cities";
+import { cities } from "@/app/lib/cities";
 
 export async function GET() {
   const apiKey = process.env.WEATHER_API_KEY;

@@ -1,4 +1,4 @@
-import { cities } from "../../cities";
+import { cities } from "@/app/lib/cities";
 
 export async function GET(request) {
   let days = new URL(request.url).searchParams.get("days");

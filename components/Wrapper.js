@@ -10,9 +10,10 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { darkTheme, lightTheme } from "@/app/theme";
+import { darkTheme, lightTheme } from "@/app/lib/theme";
 import { Brightness4, Brightness7, Refresh } from "@mui/icons-material";
 import { getCookie, setCookie } from "cookies-next";
+import { retrieveForecast, retrieveRealtime } from "@/app/lib/fetcher";
 
 export default function Wrapper({ title, children }) {
   const [darkMode, setDarkMode] = useState(true);
@@ -33,6 +34,10 @@ export default function Wrapper({ title, children }) {
   const fetchWeather = () => {
     setIsLoading(true);
     console.log("Loading latest weather reports...");
+
+    retrieveRealtime();
+    retrieveForecast({ days: 3 });
+
     console.log("Done!");
     setIsLoading(false);
   };
