@@ -12,6 +12,15 @@ You can visit the website here: [https://weather.c2yz.com](https://weather.c2yz.
 
 ## Getting Started
 
+You need to create a `.env` file in the root directory of the project with the following content:
+
+```
+WEATHER_API_KEY=<YOUR_API_KEY>
+WEATHER_API_URL=https://api.weatherapi.com/v1
+```
+
+Where `WEATHER_API_KEY` is your API key from [WeatherAPI](https://www.weatherapi.com/).
+
 To run the development server:
 
 ```bash
