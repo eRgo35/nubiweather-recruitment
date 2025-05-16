@@ -1,3 +1,4 @@
+"use client";
 import {
   Container,
   Card,
@@ -15,9 +16,12 @@ import {
   WaterDrop,
 } from "@mui/icons-material";
 import { cities } from "@/app/lib/cities";
+import { useContext } from "react";
+import { WeatherContext } from "@/app/lib/weather";
 
 export default function CurrentWeather() {
   let lastUpdated = "10 mins ago";
+  const { forecastWeather } = useContext(WeatherContext);
 
   return (
     <Container

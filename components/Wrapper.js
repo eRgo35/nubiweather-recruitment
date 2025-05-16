@@ -14,12 +14,15 @@ import { darkTheme, lightTheme } from "@/app/lib/theme";
 import { Brightness4, Brightness7, Refresh } from "@mui/icons-material";
 import { getCookie, setCookie } from "cookies-next";
 import { retrieveForecast, retrieveRealtime } from "@/app/lib/fetcher";
+import { WeatherContext } from "@/app/lib/weather";
 
 export default function Wrapper({ title, children }) {
   const [darkMode, setDarkMode] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const theme = darkMode ? darkTheme : lightTheme;
+  const [currentWeather, setCurrentWeather] = useState(null);
+  const [forecastWeather, setForecastWeather] = useState(null);
 
+  const theme = darkMode ? darkTheme : lightTheme;
   useEffect(() => {
     const stored = getCookie("dark");
     setDarkMode(stored !== "false");
@@ -35,11 +38,13 @@ export default function Wrapper({ title, children }) {
     setIsLoading(true);
     console.log("Loading latest weather reports...");
 
-    retrieveRealtime();
-    retrieveForecast({ days: 3 });
+    setCurrentWeather(retrieveRealtime());
+    setForecastWeather(retrieveForecast({ days: 3 }));
+
+    // better UX
+    setTimeout(() => setIsLoading(false), 500);
 
     console.log("Done!");
-    setIsLoading(false);
   };
 
   return (
@@ -68,8 +73,17 @@ export default function Wrapper({ title, children }) {
           sx={{ flexGrow: 1, height: "100vh", overflow: "auto" }}
         >
           <Toolbar />
-          {isLoading ? <LinearProgress /> : <></>}
-          {children}
+          {isLoading ? <LinearProgress position="absolute" /> : <></>}
+          <WeatherContext.Provider
+            value={{
+              currentWeather,
+              setCurrentWeather,
+              forecastWeather,
+              setForecastWeather,
+            }}
+          >
+            {children}
+          </WeatherContext.Provider>
         </Box>
       </Box>
     </ThemeProvider>

@@ -9,6 +9,7 @@ export const retrieveRealtime = async () => {
 
     const data = await response.json();
     console.log(data);
+    return data;
   } catch (err) {
     console.error(err);
   }
@@ -25,6 +26,7 @@ export const retrieveForecast = async ({ days }) => {
 
     const data = await response.json();
     console.log(data);
+    return data;
   } catch (err) {
     console.error(err);
   }
