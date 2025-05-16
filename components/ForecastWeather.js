@@ -8,14 +8,7 @@ import {
   Typography,
   Skeleton,
 } from "@mui/material";
-import {
-  Cloud,
-  CloudySnowing,
-  Snowing,
-  Sunny,
-  Thunderstorm,
-  WaterDrop,
-} from "@mui/icons-material";
+import { Cloud } from "@mui/icons-material";
 import { cities } from "@/app/lib/cities";
 import { useContext } from "react";
 import { WeatherContext } from "@/app/lib/weather";

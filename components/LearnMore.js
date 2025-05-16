@@ -1,12 +1,5 @@
 "use client";
-import {
-  Container,
-  Card,
-  CardHeader,
-  CardContent,
-  Avatar,
-  Typography,
-} from "@mui/material";
+import { Container, Card, CardContent, Typography } from "@mui/material";
 import Docs from "@/app/docs.mdx";
 
 export default function LearnMore() {
