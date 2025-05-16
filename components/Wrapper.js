@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { darkTheme, lightTheme } from "@/app/lib/theme";
-import { Brightness4, Brightness7, Refresh } from "@mui/icons-material";
+import { Brightness4, Brightness7, Cloud, Refresh } from "@mui/icons-material";
 import { getCookie, setCookie } from "cookies-next";
 import { retrieveForecast, retrieveRealtime } from "@/app/lib/fetcher";
 import { WeatherContext } from "@/app/lib/weather";
@@ -53,6 +53,9 @@ export default function Wrapper({ title, children }) {
       <Box sx={{ display: "flex" }}>
         <AppBar position="absolute">
           <Toolbar>
+            <IconButton>
+              <Cloud />
+            </IconButton>
             <Typography component="h1" variant="h6" noWrap sx={{ flexGrow: 1 }}>
               {title}
             </Typography>

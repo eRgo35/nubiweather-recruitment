@@ -6,6 +6,7 @@ import {
   CardContent,
   Avatar,
   Typography,
+  Skeleton,
 } from "@mui/material";
 import {
   Cloud,
@@ -51,20 +52,20 @@ export default function CurrentWeather() {
               <CardHeader
                 avatar={
                   <Avatar>
-                    {cityWeather ? (
+                    {cityWeather !== undefined ? (
                       <Image
-                        alt={cityWeather?.condition.text}
-                        src={"https:" + cityWeather?.condition.icon}
+                        alt={cityWeather?.condition?.text ?? "Loading..."}
+                        src={"https:" + cityWeather?.condition?.icon}
                         width="32"
                         height="32"
                       />
                     ) : (
                       <>
                         {/* <Sunny sx={{ color: "yellow" }} /> */}
-                        {/* <Cloud sx={{ color: "white" }} /> */}
+                        <Cloud sx={{ color: "white" }} />
                         {/* <CloudySnowing sx={{ color: "white" }} /> */}
                         {/* <Thunderstorm sx={{ color: "white" }} /> */}
-                        <WaterDrop sx={{ color: "white" }} />
+                        {/* <WaterDrop sx={{ color: "white" }} /> */}
                       </>
                     )}
                   </Avatar>
@@ -73,17 +74,24 @@ export default function CurrentWeather() {
                 subheader={`Last updated: ${cityWeather?.last_updated ?? "loading..."}`}
               />
               <CardContent>
-                {cityWeather?.condition.text}
+                <Typography variant="h6">
+                  {cityWeather?.condition?.text} &mdash; {cityWeather?.temp_c}
+                  &deg;C
+                </Typography>
                 <br />
-                Temperature: {cityWeather?.temp_c}&deg;C <br />
-                Pressure: {cityWeather?.pressure_mb} hPa <br />
-                Humidity: {cityWeather?.humidity}%<br />
-                Cloud cover: {cityWeather?.cloud}%<br />
-                UV Index: {cityWeather?.uv} <br />
-                Wind: {cityWeather?.wind_kph} km/h (degree:{" "}
-                {cityWeather?.wind_degree}&deg;, direction:{" "}
-                {cityWeather?.wind_dir})
-                <br />
+                {cityWeather !== null ? (
+                  <div>
+                    Pressure: {cityWeather?.pressure_mb} hPa <br />
+                    Humidity: {cityWeather?.humidity}%<br />
+                    Cloud cover: {cityWeather?.cloud}%<br />
+                    UV Index: {cityWeather?.uv} <br />
+                    Wind: {cityWeather?.wind_kph} km/h (
+                    {cityWeather?.wind_degree}
+                    &deg;, {cityWeather?.wind_dir})
+                  </div>
+                ) : (
+                  <Skeleton variant="rounded" height={150} />
+                )}
               </CardContent>
             </Card>
           );
