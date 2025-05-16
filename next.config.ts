@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [new URL("https://cdn.weatherapi.com/**")],
   },
+  output: "standalone",
 };
 
 const withMDX = createMDX({
