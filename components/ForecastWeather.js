@@ -21,7 +21,7 @@ import { WeatherContext } from "@/app/lib/weather";
 
 export default function ForecastWeather() {
   let lastUpdated = "5 mins ago";
-  const { currentWeather } = useContext(WeatherContext);
+  const { forecastWeather } = useContext(WeatherContext);
   return (
     <Container
       sx={{

@@ -38,8 +38,8 @@ export default function Wrapper({ title, children }) {
     setIsLoading(true);
     console.log("Loading latest weather reports...");
 
-    setCurrentWeather(retrieveRealtime());
-    setForecastWeather(retrieveForecast({ days: 3 }));
+    retrieveRealtime().then(setCurrentWeather);
+    retrieveForecast({ days: 3 }).then(setForecastWeather);
 
     // better UX
     setTimeout(() => setIsLoading(false), 500);
