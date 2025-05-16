@@ -41,4 +41,4 @@ GET /api/forecast-weather?days=%i ~ returns forecast for i number of days for Gl
 
 ## Frontend
 
-Frontend has been built using NextJS and MUI framework.
+Frontend has been built using NextJS and MUI framework. Uses context for managing weather data, has support for light and dark mode and displays documents from markdown files.
